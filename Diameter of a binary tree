@@ -1,0 +1,29 @@
+//function to find the depth of the tree
+int maxDepth(TreeNode* root){
+        if(root == NULL){
+            return 0;
+        }
+        return max(maxDepth(root -> left),maxDepth(root -> right)) + 1;
+    }
+//function to find the diameter of the tree
+    int diameter(TreeNode* root){
+
+        if(root == NULL){
+            return 0;
+        }
+
+        int left = diameter(root -> left);
+
+        int right = diameter(root -> right);
+
+        int ans = maxDepth(root -> left) + maxDepth(root -> right);
+
+        return max(left, max(right,ans));
+
+    }
+//main function
+    int diameterOfBinaryTree(TreeNode* root) {
+
+        return diameter(root);
+
+    }
